@@ -1,12 +1,14 @@
-package org.chess.boardgame;
+package org.chesssystem.boardgame;
 
-public class Position {
+public class Board {
     private int row;
     private int column;
+    private Piece[][] pieces;
 
-    public Position(int row, int column) {
+    public Board(int row, int column) {
         this.row = row;
         this.column = column;
+        pieces = new Piece[row][column];
     }
 
     public int getRow() {
@@ -25,8 +27,10 @@ public class Position {
         this.column = column;
     }
 
-    @Override
-    public String toString() {
-        return row + ",     " + column;
+    public Piece piece(int row, int column){
+        return pieces[row][column];
+    }
+    public Piece piece(Position position){
+        return pieces[position.getRow()][position.getColumn()];
     }
 }
