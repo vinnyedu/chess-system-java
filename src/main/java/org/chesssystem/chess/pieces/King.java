@@ -18,4 +18,9 @@ public class King extends ChessPiece {
             return String.valueOf('♚');
         }
     }
+
+    @Override
+    public boolean[][] possibleMoves() {
+        return new boolean[getBoard().getRows()][getBoard().getColumns()];
+    }
 }
