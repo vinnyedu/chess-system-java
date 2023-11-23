@@ -5,6 +5,7 @@ import org.chesssystem.chess.ChessMatch;
 import org.chesssystem.chess.ChessPiece;
 import org.chesssystem.chess.ChessPosition;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -39,7 +40,13 @@ public class Program {
                     captured.add(capturedPiece);
                 }
 
-            } catch (BoardException | InputMismatchException e) {
+                if (chessMatch.getPromoted() != null) {
+                    System.out.print("Enter piece for promotion(Q/R/B/N): ");
+                    String type = sc.nextLine();
+                    chessMatch.replacePromotedPiece(type);
+                }
+
+            } catch (BoardException | InputMismatchException | InvalidParameterException e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
             }
